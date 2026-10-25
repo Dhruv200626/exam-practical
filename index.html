@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Practicals | Subject Hub</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="brand">📚 <span>Practical</span>Hub</div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">🏠 Home</a></li>
+      <li><a href="ej.html">☕ EJ</a></li>
+      <li><a href="android.html">🤖 Android</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="badge">📖 Academic Practicals</div>
+    <h1>My Subject Practicals</h1>
+    <p>All your practical work organized in one place. Pick a subject and get started.</p>
+  </section>
+
+  <!-- SUBJECTS -->
+  <section class="subjects-section">
+    <h3 class="section-title">📂 Subjects</h3>
+    <div class="subject-grid">
+
+      <!-- EJ CARD -->
+      <div class="subject-card ej" onclick="window.location.href='ej.html'">
+        <div class="card-icon">☕</div>
+        <h2>Enterprise Java (EJ)</h2>
+        <p>Practicals covering Servlets, JSP, JDBC, Hibernate, Spring, and enterprise-level Java concepts.</p>
+        <div class="card-meta">
+          <span class="meta-pill">☕ Java EE</span>
+          <span class="meta-pill">🌐 Web</span>
+          <span class="meta-pill">🗄️ Database</span>
+        </div>
+        <button class="card-btn">View Practicals →</button>
+      </div>
+
+      <!-- ANDROID CARD -->
+      <div class="subject-card android" onclick="window.location.href='android.html'">
+        <div class="card-icon">🤖</div>
+        <h2>Android Development</h2>
+        <p>Practicals on UI design, Activities, Intents, SQLite, RecyclerView, APIs, and mobile app development.</p>
+        <div class="card-meta">
+          <span class="meta-pill">📱 Mobile</span>
+          <span class="meta-pill">🔧 Kotlin/Java</span>
+          <span class="meta-pill">🗄️ SQLite</span>
+        </div>
+        <button class="card-btn">View Practicals →</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Made with 💻 | My Practical Hub &copy; 2026</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
