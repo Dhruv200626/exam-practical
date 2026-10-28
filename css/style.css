@@ -10,6 +10,7 @@
   --secondary: #f50057;
   --ej-color: #f9a825;
   --android-color: #43a047;
+  --ai-color: #29b6f6;
   --dark: #1a1a2e;
   --dark2: #16213e;
   --dark3: #0f3460;
@@ -197,16 +198,18 @@ a {
   border-radius: var(--radius) var(--radius) 0 0;
 }
 
-.subject-card.ej::before  { background: var(--ej-color); }
+.subject-card.ej::before      { background: var(--ej-color); }
 .subject-card.android::before { background: var(--android-color); }
+.subject-card.ai::before      { background: var(--ai-color); }
 
 .subject-card:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow);
 }
 
-.subject-card.ej:hover     { border-color: var(--ej-color); }
+.subject-card.ej:hover      { border-color: var(--ej-color); }
 .subject-card.android:hover { border-color: var(--android-color); }
+.subject-card.ai:hover      { border-color: var(--ai-color); }
 
 .card-icon {
   font-size: 2.5rem;
@@ -257,8 +260,9 @@ a {
 }
 
 .card-btn:hover { opacity: 0.85; transform: translateX(3px); }
-.ej .card-btn   { background: var(--ej-color); color: #000; }
+.ej .card-btn      { background: var(--ej-color); color: #000; }
 .android .card-btn { background: var(--android-color); }
+.ai .card-btn      { background: var(--ai-color); color: #000; }
 
 /* ===== PRACTICAL PAGE HEADER ===== */
 .page-header {
@@ -529,4 +533,50 @@ footer {
   font-size: 0.88rem;
   color: #ffd54f;
   margin: 0.8rem 0;
+}
+
+/* ===== AI PAGE ===== */
+.ai-tag {
+  background: rgba(41, 182, 246, 0.15);
+  color: #29b6f6;
+  border: 1px solid #29b6f6;
+}
+
+.ai-page .practical-num {
+  background: var(--ai-color);
+  color: #000;
+}
+
+/* ===== OUTPUT TEXT BLOCK ===== */
+.output-text {
+  background: #0d1117;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: #c9d1d9;
+  margin-top: 0.5rem;
+}
+
+/* ===== AIM LIST ===== */
+.aim-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0.8rem;
+}
+
+.aim-list li {
+  padding: 0.25rem 0 0.25rem 1.2rem;
+  position: relative;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.aim-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--ai-color);
 }
