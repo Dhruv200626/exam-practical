@@ -1,0 +1,13 @@
+import RPi.GPIO as gp
+from time import sleep
+
+led1 = 15
+
+gp.setmode(gp.BCM)
+gp.setup(led1, gp.OUT)
+
+while True:
+    gp.output(led1, gp.HIGH)
+    sleep(0.1)
+    gp.output(led1, gp.LOW)
+    sleep(0.1)

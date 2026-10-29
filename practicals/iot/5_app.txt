@@ -1,0 +1,24 @@
+from flask import Flask, render_template
+import RPi.GPIO as gp
+
+app = Flask(__name__)
+
+led = 17
+gp.setmode(gp.BCM)
+gp.setup(led, gp.OUT)
+gp.output(led, gp.LOW)
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+@app.route("/<action>")
+def control(action):
+    if action == "on":
+        gp.output(led, gp.HIGH)
+    elif action == "off":
+        gp.output(led, gp.LOW)
+    return index()
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5150)

@@ -1,0 +1,13 @@
+from picamzero import Camera
+
+cam = Camera()
+cam.flip_camera(vflip=True)
+cam.start_preview()
+
+# Take a photo
+cam.take_photo("New/Dhruv.jpg")
+
+# Record a video for 10 seconds
+cam.record_video("New/vid1.mp4", duration=10)
+
+cam.start_preview()
