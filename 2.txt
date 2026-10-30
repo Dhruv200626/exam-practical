@@ -1,18 +1,249 @@
 // ============================================================
-// PRACTICAL 2 - Delegates: Single Delegate & Multicast Delegate
+// PRACTICAL 2 - C# OOP Concepts
 // ============================================================
 
 
 // ============================================================
-// 1) Single Delegate
+// a) Function Overloading
 // ============================================================
 
 using System;
+namespace ConsoleApp5
+{
+    class Calculator
+    {
+        public int Add(int a, int b)
+        {
+            return a + b;
+        }
+        public int Add(int a, int b, int c)
+        {
+            return a + b + c;
+        }
+        public double Add(double a, double b)
+        {
+            return a + b;
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Calculator obj = new Calculator();
+            Console.WriteLine("Addition of 10 and 20 = " + obj.Add(10, 20));
+            Console.WriteLine("Addition of 10, 20 and 30 = " + obj.Add(10, 20, 30));
+            Console.WriteLine("Addition of 10.5 and 20.8 = " + obj.Add(10.5, 20.8));
+            Console.ReadKey();
+        }
+    }
+}
 
+/*
+OUTPUT:
+Addition of 10 and 20 = 30
+Addition of 10, 20 and 30 = 60
+Addition of 10.5 and 20.8 = 31.3
+*/
+
+
+// ============================================================
+// b) Inheritance: Single and Multilevel
+// ============================================================
+
+// --- 1) Single Inheritance ---
+
+using System;
+namespace ConsoleApp5
+{
+    class A
+    {
+        public void Person()
+        {
+            Console.WriteLine("This is the Base Class Person");
+        }
+    }
+    class B : A
+    {
+        public void Student()
+        {
+            Console.WriteLine("This is the Derived Class Student.");
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            B obj = new B();
+            obj.Person();
+            obj.Student();
+            Console.ReadKey();
+        }
+    }
+}
+
+/*
+OUTPUT:
+This is the Base Class Person
+This is the Derived Class Student.
+*/
+
+
+// --- 2) Multilevel Inheritance ---
+
+using System;
+namespace ConsoleApp5
+{
+    class A
+    {
+        public void Person()
+        {
+            Console.WriteLine("This is the Base Class Person");
+        }
+    }
+    class B : A
+    {
+        public void Student()
+        {
+            Console.WriteLine("This is the Intermediate Class Student");
+        }
+    }
+    class C : B
+    {
+        public void Result()
+        {
+            Console.WriteLine("This is the Derived Class Result");
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            C obj = new C();
+            obj.Person();
+            obj.Student();
+            obj.Result();
+            Console.ReadKey();
+        }
+    }
+}
+
+/*
+OUTPUT:
+This is the Base Class Person
+This is the Intermediate Class Student
+This is the Derived Class Result
+*/
+
+
+// ============================================================
+// c) Constructor Overloading
+// ============================================================
+
+using System;
+class Student
+{
+    int rollNo;
+    string name;
+
+    public Student()
+    {
+        rollNo = 0;
+        name = "Not Assigned";
+    }
+    public Student(int r, string n)
+    {
+        rollNo = r;
+        name = n;
+    }
+    public void Display()
+    {
+        Console.WriteLine("Roll No : " + rollNo);
+        Console.WriteLine("Name : " + name);
+        Console.WriteLine();
+    }
+}
+class Program
+{
+    static void Main(string[] args)
+    {
+        Student s1 = new Student();
+        Student s2 = new Student(102, "Payal");
+        Console.WriteLine("Object 1:");
+        s1.Display();
+        Console.WriteLine("Object 2:");
+        s2.Display();
+        Console.ReadKey();
+    }
+}
+
+/*
+OUTPUT:
+Object 1:
+Roll No : 0
+Name : Not Assigned
+
+Object 2:
+Roll No : 102
+Name : Payal
+*/
+
+
+// ============================================================
+// d) Interfaces
+// ============================================================
+
+using System;
+namespace Practical_2D
+{
+    interface IDrivable
+    {
+        void show1();
+    }
+    interface IFlyable
+    {
+        void show2();
+    }
+    class Car : IDrivable, IFlyable
+    {
+        public void show1()
+        {
+            Console.WriteLine("Hello! I'm Driving!");
+        }
+        public void show2()
+        {
+            Console.WriteLine("Hello! I'm Flying!");
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            IDrivable drive = new Car();
+            drive.show1();
+            IFlyable fly = new Car();
+            fly.show2();
+            Console.ReadKey();
+        }
+    }
+}
+
+/*
+OUTPUT:
+Hello! I'm Driving!
+Hello! I'm Flying!
+*/
+
+
+// ============================================================
+// e) Delegate: Single Delegate and Multicast Delegate
+// ============================================================
+
+// --- 1) Single Delegate ---
+
+using System;
 namespace ConsoleApp5
 {
     public delegate void Message();
-
     class Demo
     {
         public void Display()
@@ -20,7 +251,6 @@ namespace ConsoleApp5
             Console.WriteLine("Hello! This is Single-Cast Delegate.");
         }
     }
-
     class Program
     {
         static void Main(string[] args)
@@ -39,16 +269,12 @@ Hello! This is Single-Cast Delegate.
 */
 
 
-// ============================================================
-// 2) Multicast Delegate
-// ============================================================
+// --- 2) Multicast Delegate ---
 
 using System;
-
 namespace ConsoleApp5
 {
     public delegate void Message();
-
     class Demo
     {
         public void Welcome()
@@ -64,7 +290,6 @@ namespace ConsoleApp5
             Console.WriteLine("Program Completed");
         }
     }
-
     class Program
     {
         static void Main(string[] args)
@@ -84,4 +309,51 @@ OUTPUT:
 Welcome to C#
 Learning Multicast Delegate
 Program Completed
+*/
+
+
+// ============================================================
+// f) Exception Handling
+// ============================================================
+
+using System;
+namespace ConsoleApp5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int num1, num2, result;
+            try
+            {
+                Console.Write("Enter First Number: ");
+                num1 = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Enter Second Number: ");
+                num2 = Convert.ToInt32(Console.ReadLine());
+                result = num1 / num2;
+                Console.WriteLine("Result = " + result);
+            }
+            catch (DivideByZeroException)
+            {
+                Console.WriteLine("Error: Division by zero is not allowed.");
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Error: Please enter only numeric values.");
+            }
+            finally
+            {
+                Console.WriteLine("Program Executed Successfully.");
+            }
+            Console.ReadKey();
+        }
+    }
+}
+
+/*
+OUTPUT:
+Enter First Number: 20
+Enter Second Number: 10
+Result = 2
+Program Executed Successfully.
 */
