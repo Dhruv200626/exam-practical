@@ -1,0 +1,87 @@
+// ============================================================
+// PRACTICAL 2 - Delegates: Single Delegate & Multicast Delegate
+// ============================================================
+
+
+// ============================================================
+// 1) Single Delegate
+// ============================================================
+
+using System;
+
+namespace ConsoleApp5
+{
+    public delegate void Message();
+
+    class Demo
+    {
+        public void Display()
+        {
+            Console.WriteLine("Hello! This is Single-Cast Delegate.");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Demo obj = new Demo();
+            Message msg = obj.Display;
+            msg();
+            Console.ReadKey();
+        }
+    }
+}
+
+/*
+OUTPUT:
+Hello! This is Single-Cast Delegate.
+*/
+
+
+// ============================================================
+// 2) Multicast Delegate
+// ============================================================
+
+using System;
+
+namespace ConsoleApp5
+{
+    public delegate void Message();
+
+    class Demo
+    {
+        public void Welcome()
+        {
+            Console.WriteLine("Welcome to C#");
+        }
+        public void Learn()
+        {
+            Console.WriteLine("Learning Multicast Delegate");
+        }
+        public void End()
+        {
+            Console.WriteLine("Program Completed");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Demo obj = new Demo();
+            Message msg = obj.Welcome;
+            msg += obj.Learn;
+            msg += obj.End;
+            msg();
+            Console.ReadKey();
+        }
+    }
+}
+
+/*
+OUTPUT:
+Welcome to C#
+Learning Multicast Delegate
+Program Completed
+*/

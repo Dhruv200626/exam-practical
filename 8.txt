@@ -1,0 +1,138 @@
+// ============================================================
+// PRACTICAL 8 - Progressive Web App (PWA)
+// Aim: Demonstrate website functionality with Service Worker
+//      for offline availability and caching.
+// ============================================================
+
+
+// ============================================================
+// FILE: index.html
+// ============================================================
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: lightblue;
+        }
+        nav {
+            background-color: navy;
+            padding: 15px;
+        }
+        nav a {
+            color: white;
+            margin: 15px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+    </nav>
+    <h1>Welcome to My PWA</h1>
+    <p>This is the Home Page.</p>
+    <p>Welcome to our simple web application!</p>
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("service-worker.js");
+        }
+    </script>
+</body>
+</html>
+
+
+// ============================================================
+// FILE: about.html
+// ============================================================
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: lightyellow;
+        }
+        nav {
+            background-color: navy;
+            padding: 15px;
+        }
+        nav a {
+            color: white;
+            margin: 15px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+    </nav>
+    <h1>About Us</h1>
+    <p>This is a simple Progressive Web Application.</p>
+    <p>It demonstrates navigation and offline access.</p>
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("service-worker.js");
+        }
+    </script>
+</body>
+</html>
+
+
+// ============================================================
+// FILE: manifest.json
+// ============================================================
+
+{
+    "name": "My Simple PWA",
+    "short_name": "SimplePWA",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#000080"
+}
+
+
+// ============================================================
+// FILE: service-worker.js
+// ============================================================
+
+self.addEventListener("install", event => {
+    event.waitUntil(
+        caches.open("my-cache").then(cache => {
+            return cache.addAll([
+                "index.html",
+                "about.html"
+            ]);
+        })
+    );
+});
+
+self.addEventListener("fetch", event => {
+    event.respondWith(
+        caches.match(event.request).then(response => {
+            return response || fetch(event.request);
+        })
+    );
+});
+
+/*
+OUTPUT:
+The PWA loads in the browser with Home and About pages.
+Once visited, the Service Worker caches both pages so they
+are available offline without an internet connection.
+*/

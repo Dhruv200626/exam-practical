@@ -1,0 +1,128 @@
+// ============================================================
+// PRACTICAL 1 - C# Console Applications
+// ============================================================
+
+
+// ============================================================
+// A] Arithmetic Operations
+// ============================================================
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int num1, num2;
+            Console.WriteLine("Enter the first number: ");
+            num1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter the second number: ");
+            num2 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Addition = " + (num1 + num2));
+            Console.WriteLine("Subtraction = " + (num1 - num2));
+            Console.WriteLine("Multiplication = " + (num1 * num2));
+            Console.WriteLine("Division = " + (num1 / num2));
+            Console.WriteLine("Modulus = " + (num1 % num2));
+            Console.ReadKey();
+        }
+    }
+}
+
+/*
+OUTPUT:
+Enter the first number: 35
+Enter the second number: 10
+Addition      = 45
+Subtraction   = 25
+Multiplication = 350
+Division      = 3
+Modulus       = 5
+*/
+
+
+// ============================================================
+// B] Floyd's Triangle
+// ============================================================
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int rows = 5;
+            int num = 1;
+            for (int i = 1; i <= rows; i++)
+            {
+                for (int j = 1; j <= i; j++)
+                {
+                    Console.Write(num + " ");
+                    num++;
+                }
+                Console.WriteLine();
+            }
+            Console.ReadKey();
+        }
+    }
+}
+
+/*
+OUTPUT:
+1
+2 3
+4 5 6
+7 8 9 10
+11 12 13 14 15
+*/
+
+
+// ============================================================
+// C] Sort Cities in Alphabetical Order
+// ============================================================
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] cities = new string[10];
+            Console.WriteLine("Enter cities");
+            for (int i = 0; i < cities.Length; i++)
+            {
+                Console.WriteLine("city" + (i + 1) + ":");
+                cities[i] = Console.ReadLine();
+            }
+            Array.Sort(cities);
+            Console.WriteLine();
+            foreach (string x in cities)
+            {
+                Console.WriteLine(x);
+            }
+            Console.ReadKey();
+        }
+    }
+}
+
+/*
+OUTPUT:
+Enter 10 city names. They will be printed in alphabetical (sorted) order.
+*/
