@@ -1,0 +1,54 @@
+// ============================================================
+// PRACTICAL 4 - ASP.NET Calendar Control
+// Aim: Demonstrate the use of Calendar control in ASP.NET
+//      Web Forms to display dates, calculate remaining days,
+//      and handle date selection events.
+// ============================================================
+
+
+// ============================================================
+// FILE: Default.aspx.cs (Code-Behind)
+// ============================================================
+
+protected void Calendar1_SelectionChanged(object sender, EventArgs e)
+{
+    Label1.Text = "You have selected " + Calendar1.SelectedDate.Date.ToString();
+}
+
+protected void Button1_Click(object sender, EventArgs e)
+{
+    Calendar1.Caption = "TYIT";
+    Calendar1.NextPrevFormat = NextPrevFormat.ShortMonth;
+
+    Label2.Text = "Todays date is " + Calendar1.TodaysDate.ToShortDateString();
+    Label3.Text = "Ganpati vacation starts on 14/09/2026";
+
+    TimeSpan t = new DateTime(2026, 09, 14) - DateTime.Now;
+    Label4.Text = "Days Remaining for ganpati vacation are " + t.ToString();
+
+    TimeSpan t1 = new DateTime(2026, 12, 31) - DateTime.Now;
+    Label5.Text = "Days left for new year " + t1.ToString();
+}
+
+protected void Button2_Click(object sender, EventArgs e)
+{
+    Label1.Text = "";
+    Label2.Text = "";
+    Label3.Text = "";
+    Label4.Text = "";
+    Label5.Text = "";
+}
+
+/*
+OUTPUT:
+- Clicking a date on the Calendar shows:
+  Label1: "You have selected 10/26/2026 12:00:00 AM"
+
+- Clicking Button1 shows:
+  Label2: "Todays date is 26/10/2026"
+  Label3: "Ganpati vacation starts on 14/09/2026"
+  Label4: "Days Remaining for ganpati vacation are -42.14:23:10.1234567"
+  Label5: "Days left for new year 65.09:36:49.8765432"
+
+- Clicking Button2 clears all labels.
+*/
