@@ -1,0 +1,25 @@
+using System;
+
+namespace ConsoleApp5
+{
+    public delegate void Message();
+
+    class Demo
+    {
+        public void Display()
+        {
+            Console.WriteLine("Hello! This is Single-Cast Delegate.");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Demo obj = new Demo();
+            Message msg = obj.Display;
+            msg();
+            Console.ReadKey();
+        }
+    }
+}

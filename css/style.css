@@ -619,3 +619,23 @@ footer {
   background: #ff7043;
   color: #fff;
 }
+
+/* ===== .NET PAGE ===== */
+:root {
+  --dotnet-color: #a78bfa;
+}
+
+.dotnet-tag {
+  background: rgba(167, 139, 250, 0.15);
+  color: #a78bfa;
+  border: 1px solid #a78bfa;
+}
+
+.dotnet-page .practical-num {
+  background: var(--dotnet-color);
+  color: #000;
+}
+
+.subject-card.dotnet::before  { background: var(--dotnet-color); }
+.subject-card.dotnet:hover    { border-color: var(--dotnet-color); }
+.dotnet .card-btn             { background: var(--dotnet-color); color: #000; }
